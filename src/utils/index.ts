@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 // 两个叹号，把一个值转化为bool值
-export const isFalse = (value: any) => value === 0 ? false : !value
+export const isFalse = (value: unknown) => value === 0 ? false : !value
 
 export const cleanObject = (object: object) => {
   // Object.assign({}, object)
@@ -20,12 +20,13 @@ export const cleanObject = (object: object) => {
 
 export const useMount = (callback: () => void) => {
   useEffect(() => {
-    callback()
+    callback();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }
 
 // 自定义hook最大的特征，里面需要使用别的hook，不然普通函数就能做到了。 ?: 要么就不传，要么就传一个number
-export const useDebounce = (value: any, delay?: number) => {
+export const useDebounce = <V>(value: V, delay?: number) => {
   // debouncedValue 为定义的内部变量 debouncedValue的更新频率和上面的参数value不一样
   const [debouncedValue, setDebouncedValue] = useState(value)
 
@@ -38,4 +39,19 @@ export const useDebounce = (value: any, delay?: number) => {
   }, [value, delay])
 
   return debouncedValue
+}
+
+export const useArray = <T>(initialArray: T[]) => {
+  const [value, setValue] = useState(initialArray)
+  return {
+    value,
+    setValue,
+    add: (item: T) => setValue([item, ...value]),
+    clear: () => setValue([]),
+    removeIndex: (index: number) => {
+      const copy = [...value]
+      copy.splice(index, 1)
+      setValue(copy)
+    }
+  }
 }

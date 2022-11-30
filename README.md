@@ -218,6 +218,28 @@ d.ts是给ts打补丁用的
 
 
 
+form表单里面，onSubmit的类型为：`HTMLFormElement` 是继承于 `Element`的
+
+
+
+ts是鸭子类型（duck typing），面向接口编程，而不是面向对象编程。
+
+
+
+## 5. 登录相关
+
+`__json__server__mock__/middleware.js` 这个里面，主要是自己模拟登录验证，需要在`package.json`里面配置：
+
+```
+"json-server": "json-server __json__server__mock__/db.json --watch --port 3001 --middlewares __json__server__mock__/middleware.js"
+```
+
+才能运行生效。
+
+
+
+
+
 
 
 
