@@ -1,29 +1,31 @@
 import { useEffect, useState } from "react"
 
 // 两个叹号，把一个值转化为bool值
-export const isFalse = (value) => value === 0 ? false : !value
+export const isFalse = (value: any) => value === 0 ? false : !value
 
-export const cleanObject = (object) => {
+export const cleanObject = (object: object) => {
   // Object.assign({}, object)
   const result = {...object}
   Object.keys(result).forEach(key => {
+    // @ts-ignore
     const value = result[key]
     // 这个代码就是防止value取0的情况
     if (isFalse(value)) {
+      // @ts-ignore
       delete result[key]
-    }
+    }  
   })
   return result
 }
 
-export const useMount = (callback) => {
+export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback()
   }, [])
 }
 
-// 自定义hook最大的特征，里面需要使用别的hook，不然普通函数就能做到了。
-export const useDebounce = (value, delay) => {
+// 自定义hook最大的特征，里面需要使用别的hook，不然普通函数就能做到了。 ?: 要么就不传，要么就传一个number
+export const useDebounce = (value: any, delay?: number) => {
   // debouncedValue 为定义的内部变量 debouncedValue的更新频率和上面的参数value不一样
   const [debouncedValue, setDebouncedValue] = useState(value)
 
