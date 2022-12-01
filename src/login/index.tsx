@@ -13,10 +13,26 @@ export const LoginScreen = () => {
     }).then(
       async response => {
         if (response.ok) {
-          
+          const p = await response.json()
+          console.log(p.user.token)
         }
     })
   }
+
+  /* const login = (param: {username: string, password: string}) => {
+    fetch(`${apiURL}/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(param)
+    }).then(
+      async response => {
+        if (response.ok) {
+          
+        }
+    })
+  } */
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -35,7 +51,8 @@ export const LoginScreen = () => {
         <label htmlFor="password">用户名</label>
         <input type="password" id={'password'} />
       </div>
-      <button type='submit'>登录</button>
+      {/* <button type='submit'>登录</button> */}
+      <button type='submit'>注册</button>
     </form>
   )
 }
