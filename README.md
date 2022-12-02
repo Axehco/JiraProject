@@ -254,6 +254,26 @@ module.exports = (req, res, next) => {
 }
 ```
 
+工具安装 [jira-dev-tool发布官网](https://www.npmjs.com/package/jira-dev-tool)
+
+命令：
+
+```
+npm i jira-dev-tool
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
