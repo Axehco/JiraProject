@@ -264,6 +264,65 @@ npm i jira-dev-tool
 
 
 
+## 6. 样式
+
+安装antd
+
+```
+yarn add antd
+```
+
+自定义主题
+
+```
+yarn add @craco/craco
+yarn add craco-less
+```
+
+然后修改package.json
+
+```
+"scripts": {
+  "start": "craco start",
+  "build": "craco build",
+  "test": "craco test",
+  "eject": "react-scripts eject",
+  "prepare": "husky install",
+  "json-server": "json-server __json__server__mock__/db.json --watch --port 3001 --middlewares __json__server__mock__/middleware.js"
+},
+```
+
+新建文件： `craco.config.js`
+
+```js
+const CracoLessPlugin = require("craco-less");
+
+module.exports = {
+  plugins: [
+    {
+      plugin: CracoLessPlugin,
+      options: {
+        lessLoaderOptions: {
+          lessOptions: {
+            modifyVars: {
+              "@primary-color": "rgb(0, 82, 204)",
+              "@font-size-base": "16px",
+            },
+            javascriptEnabled: true,
+          },
+        },
+      },
+    },
+  ],
+};
+```
+
+
+
+
+
+[emotion](https://emotion.sh/docs/introduction)
+
 
 
 

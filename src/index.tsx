@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { AppProviders } from './context/index'
 
 // import {loadDevTools} from 'jira-dev-tool'
 // 务必在jira-dev-tool后面引入
 // import "antd/dist/antd.less";
+// import 'antd/dist/antd.less'
+import { AppProviders } from './context/index'
 
 /* loadDevTools(() => {
   const root = ReactDOM.createRoot(
