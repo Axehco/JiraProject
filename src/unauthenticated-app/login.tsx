@@ -2,12 +2,12 @@ import React from 'react'
 import { useAuth } from 'context/auth-context'
 import { Form, Input, Button } from 'antd'
 
-
 export const LoginScreen = () => {
   const { login } = useAuth()
 
   // 是根据Form.Item中的usernam中的类型来推断的
   const handleSubmit = (values: {username: string, password: string}) => {
+    console.log('values: ', values)
     login(values)
   }
 

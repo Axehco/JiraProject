@@ -16,6 +16,7 @@ const bootstrapUser = async () => {
   const token = auth.getToken();
   if (token) {
     const data = await http("me", { token });
+    // console.log('data::: ', data)
     user = data.user;
   }
   return user;
@@ -35,6 +36,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   // point free
   const login = (form: AuthForm) => auth.login(form).then(setUser);
+  // console.log('login::', login)
   const register = (form: AuthForm) => auth.register(form).then(setUser);
   const logout = () => auth.logout().then(() => setUser(null))
 

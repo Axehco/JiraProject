@@ -317,11 +317,13 @@ module.exports = {
 };
 ```
 
-
-
-
-
 [emotion](https://emotion.sh/docs/introduction)
+
+```
+yarn add @emotion/react @emotion/styled
+```
+
+需要安装一款插件，才有代码提示： vscode-styled-components
 
 
 
